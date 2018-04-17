@@ -28,4 +28,15 @@ router.get('/getAlbumList', function(req, res, next) {
     });
 });
 
+router.post('/uploadAlbumPic', function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    dbAlbum.uploadAlbumPic(req,res,function(err,result) {
+        if(err){
+            res.json(resultUtil.getERROR(""));
+            return;
+        }
+		res.json(resultUtil.getSuccess("success"));
+    });
+});
+
 module.exports = router;
